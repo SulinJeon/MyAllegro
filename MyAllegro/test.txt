@@ -1,0 +1,30 @@
+Identifier=[Title]
+
+Load=[Position][Font][Animation]
+[0 0][NanumGothic.ttf][Fade]
+
+Load=[MenuItem][MenuLink]
+[New Game][GamePlayScreen]
+[Load Game][SplashScreen]
+[Options][SplashScreen]
+[Credits][SplashScreen]
+
+EndIdentifier=[Title]
+
+
+Identifier=[Splash]
+
+Load=[Image]
+[Splash/Image1.png]
+[Splash/Image2.png]
+[Splash/Image3.png]
+
+EndIdentifier=[Splash]
+
+Identifier=[Player]
+
+Load=[Image][Position]
+[Load/Player.png][10 10]
+
+EndIdentifier=[Player]
+
