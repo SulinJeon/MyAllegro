@@ -13,10 +13,12 @@ Player::~Player()
 void Player::LoadContent(std::vector<std::string> category, std::vector<std::string> contents)
 {
 	Entity::LoadContent(category, contents);
-	moveSpeed = 5.0f;
+	//moveSpeed = 5.0f;
 	direction = Direction::DOWN;
-
-	
+	//엔티티마다 따로 그래비티 설정할수도 있으니까
+	gravity = 1.0f;
+	jumpSpeed = 15.0f;
+	activateGravity = true;
 }
 
 void Player::UnloadContent()
@@ -33,28 +35,41 @@ void Player::Update(ALLEGRO_EVENT ev)
 	input.Update();
 	animation.IsActive() = true;
 
-	if(input.IsKeyDown(ALLEGRO_KEY_DOWN))
+
+	if(input.IsKeyDown(ALLEGRO_KEY_UP) && !activateGravity)
 	{
-		direction = Direction::DOWN;
-		position[1] += moveSpeed;
+		//Up키를 누르거나 그래비티가 비활성화 되있을때만 뛸수 있다
+		//뛰고 나면 그래비티를 활성화 시킨다
+		direction = Direction::UP;
+		velocity[1] = -jumpSpeed;
+		activateGravity = true;
 	}
 	else if(input.IsKeyDown(ALLEGRO_KEY_LEFT))
 	{
 		direction = Direction::LEFT;
-		position[0] -= moveSpeed;
+		velocity[0] = -moveSpeed;
 	}
 	else if(input.IsKeyDown(ALLEGRO_KEY_RIGHT))
 	{
 		direction = Direction::RIGHT;
-		position[0] += moveSpeed;
-	}
-	else if(input.IsKeyDown(ALLEGRO_KEY_UP))
-	{
-		direction = Direction::UP;
-		position[1] -= moveSpeed;
+		velocity[0] = +moveSpeed;
 	}
 	else
+	{
+		velocity[0] = 0;
 		animation.IsActive() = false;
+	}
+
+	if(activateGravity)
+	{
+		/*그래비티가 활성화 되면 그래비티를 더해준다*/
+		velocity[1] += gravity;
+	}
+	else
+		velocity[1] = 0;
+
+	position[0] += velocity[0];
+	position[1] += velocity[1];
 
 	animation.CurrentFrame().second = direction;
 	animation.Position(position[0], position[1]);

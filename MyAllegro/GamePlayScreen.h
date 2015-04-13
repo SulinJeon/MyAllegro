@@ -6,7 +6,7 @@
 class GamePlayScreen : public GameScreen
 {
 	private:
-	EntityManager player;
+	EntityManager player, enemies;
 	Map map;
 	public:
 	GamePlayScreen();

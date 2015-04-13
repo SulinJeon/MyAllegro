@@ -1,0 +1,4 @@
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[Load/Player.png][320,150][Down][60][1]
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[Load/Player.png][480,220][Right][20][1]

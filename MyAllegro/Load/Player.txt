@@ -1,2 +1,2 @@
 Load=[Image][Position][MoveSpeed]
-[Load/Player.png][10,410][5]
+[Load/Player.png][10,10][5]

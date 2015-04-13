@@ -22,6 +22,19 @@ void Entity::LoadContent(std::vector<std::string> category, std::vector<std::str
 			position[0] = atof(tempString.substr(0, tempString.find(',')).c_str());
 			position[1] = atof(tempString.substr(tempString.find(',') + 1).c_str());
 		}
+		else if(category[i] == "Direction")
+		{
+			if(contents[i] == "Right")
+				direction = Direction::RIGHT;
+			else
+				direction = Direction::LEFT;
+		}
+		else if(category[i] == "Range")
+		{
+			range = atoi(contents[i].c_str());
+		}
+		else if(category[i] == "MoveSpeed")
+			moveSpeed = atof(contents[i].c_str());
 	}
 	animation.LoadContent(image, "", position);
 

@@ -13,7 +13,7 @@ class Tile
 	//타일 state를 정한다
 	static enum State { SOLID, PASSIVE };
 		
-	void SetContent(ALLEGRO_BITMAP *image, State state, float position[]);
+	void SetContent(int id, ALLEGRO_BITMAP *image, State state, float position[]);
 	void UnloadContent();
 	void Update(ALLEGRO_EVENT ev, Entity &e);
 	void Draw(ALLEGRO_DISPLAY *display);
@@ -23,6 +23,7 @@ class Tile
 	State state;
 	ALLEGRO_BITMAP *tileImage;
 	float position[2];
-
+	bool containsEntity;
+	int id;
 };
 

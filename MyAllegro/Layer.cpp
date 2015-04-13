@@ -25,6 +25,7 @@ void Layer::LoadContent(std::string layerID)
 	fileManager.LoadContent("Load/Map1.txt", category, contents, layerID);
 	
 	int indexY = 0;
+	int id = 0;
 
 	for(int i = 0; i < category.size(); i++)
 	{
@@ -61,8 +62,8 @@ void Layer::LoadContent(std::string layerID)
 
 						Tile tileInstance;
 						tiles.push_back(tileInstance);
-						tiles[tiles.size() - 1].SetContent(tileImage, tempState, position);
-
+						tiles[tiles.size() - 1].SetContent(id, tileImage, tempState, position);
+						id++;
 					}
 				}
 				indexY++;

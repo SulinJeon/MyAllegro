@@ -33,6 +33,8 @@ void EntityManager::LoadContent(std::string filename, std::string id, std::strin
 		Entity *entity;
 		if(type == "Player")
 			entity = new Player();
+		else if(type == "Enemy")
+			entity = new Enemy();
 		entities.push_back(entity);
 		entities[i]->LoadContent(category[i], contents[i]);
 	}
@@ -52,6 +54,20 @@ void EntityManager::Update(ALLEGRO_EVENT ev)
 	for(int i = 0; i < entities.size(); i++)
 	{
 		entities[i]->Update(ev);
+	}
+}
+
+void EntityManager::EntityCollision(EntityManager e2)
+{
+	for(int i = 0; i < entities.size(); i++)
+	{
+		for(int j = 0; j < e2.entities.size(); j++)
+		{
+			if(entities[i]->rect->IsIntersect(*e2.entities[j]->rect))
+			{
+				std::cout << "collision" << std::endl;
+			}
+		}
 	}
 }
 
