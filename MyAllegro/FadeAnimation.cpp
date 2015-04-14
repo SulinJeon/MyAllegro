@@ -3,7 +3,7 @@
 
 FadeAnimation::FadeAnimation()
 {
-	fadeSpeed = 3.0f;
+	fadeSpeed = 5.0f;
 	increase = false;
 }
 

@@ -18,7 +18,7 @@ void Animation::LoadContent(ALLEGRO_BITMAP *image, std::string text, float posit
 	this->position[1] = position[1];
 
 	alpha = 255;
-	font = al_load_font("NanumGothic.ttf", 30, NULL);
+	font = al_load_font("NanumGothic.ttf", 50, NULL);
 	sourceRect = image;
 	isActive = false;
 
@@ -96,6 +96,7 @@ ALLEGRO_BITMAP* Animation::Image()
 	return image;
 }
 
+//SpriteSheet 애니매이션에서 subbitmap 만들때 넘겨줄라고 만듬
 ALLEGRO_BITMAP*& Animation::SourceRect()
 {
 	return sourceRect;

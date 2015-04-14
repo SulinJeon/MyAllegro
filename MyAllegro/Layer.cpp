@@ -39,6 +39,17 @@ void Layer::LoadContent(std::string layerID)
 			{
 				tileSheet = al_load_bitmap(contents[i][j].c_str());
 			}
+			else if(category[i][j] == "Motion")
+			{
+				std::pair<int, int> temp;
+				std::string motionType;
+
+				std::string tempStr = contents[i][j].substr(0, 3);
+				motionType = contents[i][j].substr(4);
+				temp = SetTiles(tempStr);
+
+				motion[temp] = motionType;
+			}
 			else if(category[i][j] == "StartLayer")
 			{
 				for(int k = 0; k < contents[i].size(); k++)
@@ -60,9 +71,21 @@ void Layer::LoadContent(std::string layerID)
 						//indexY를 이용해서 쉽게 0부터 시작
 						float position[2] = { k * 32, indexY * 32 };
 
+						Tile::Motion m;
+
+						if(motion.find(tempTile) != motion.end())
+						{
+							if(motion[tempTile] == "Horizontal")
+								m = Tile::Motion::HORIZONTAL;
+							else
+								m = Tile::Motion::VERTICAL;
+						}
+						else
+							m = Tile::Motion::STATIC;
+
 						Tile tileInstance;
 						tiles.push_back(tileInstance);
-						tiles[tiles.size() - 1].SetContent(id, tileImage, tempState, position);
+						tiles[tiles.size() - 1].SetContent(id, tileImage, m, tempState, position);
 						id++;
 					}
 				}
@@ -76,6 +99,7 @@ void Layer::UnloadContent()
 {
 	for(int i = 0; i < tiles.size(); i++)
 		tiles[i].UnloadContent();
+	tiles.clear();
 	al_destroy_bitmap(tileSheet);
 }
 

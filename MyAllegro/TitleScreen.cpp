@@ -12,13 +12,13 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::LoadContent()
 {
-	font = al_load_font("NanumGothic.ttf", 30, NULL);
+	titleImage = al_load_bitmap("Load/Title.png");
 	menu.LoadContent("Title");
 }
 
 void TitleScreen::UnloadContent()
 {
-	al_destroy_font(font);
+	al_destroy_bitmap(titleImage);
 	menu.UnloadContent();
 }
 
@@ -33,6 +33,6 @@ void TitleScreen::Update(ALLEGRO_EVENT ev)
 
 void TitleScreen::Draw(ALLEGRO_DISPLAY *display)
 {
-	//al_draw_text(font, al_map_rgb(255, 0, 0), 100, 100, NULL, "TitleScreen");
+	al_draw_bitmap(titleImage, 0, 0, NULL);
 	menu.Draw(display);
 }

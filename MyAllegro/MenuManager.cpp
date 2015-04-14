@@ -52,7 +52,7 @@ void MenuManager::SetAnimation()
 		animation.push_back(a);
 		animation[i].LoadContent(menuImages[i], menuItems[i], position);
 
-		*(pos + 1) += 30;
+		*(pos + 1) += 50;
 	}
 }
 

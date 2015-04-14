@@ -2,6 +2,7 @@
 
 #include "FileManager.h"
 #include "Tile.h"
+#include <map>
 
 class Layer
 {
@@ -12,6 +13,8 @@ class Layer
 	std::vector<std::vector<std::string>> contents;
 	//Solid타일 종류들 저장
 	std::vector<std::pair<int, int>> solidTiles;
+	//Motion타일 저장
+	std::map<std::pair<int, int>, std::string> motion;
 	//타일클래스형 벡터
 	std::vector<Tile> tiles;
 	//텍스트파일에서 float형으로 변환해줌

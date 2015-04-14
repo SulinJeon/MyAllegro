@@ -1,6 +1,5 @@
 #include "Map.h"
 
-
 Map::Map()
 {
 }
@@ -10,25 +9,31 @@ Map::~Map()
 {
 }
 
-void Map::LoadContent()
+void Map::LoadContent(std::string stageNumber)
 {
+	layer = new Layer();
+	layer->LoadContent(stageNumber);
 	//지금은 1스테이지뿐
-	Layer layerInstace;
+	/*Layer layerInstace;
 	layers.push_back(layerInstace);
-	layers[0].LoadContent("Layer1");
+	layers[0].LoadContent("Layer1");*/
 }
 
 void Map::UnloadContent()
 {
-	layers[0].UnloadContent();
+	layer->UnloadContent();
+	delete layer;
+	//layers[0].UnloadContent();
 }
 
 void Map::Update(ALLEGRO_EVENT ev, Entity &e)
 {
-	layers[0].Update(ev, e);
+	layer->Update(ev, e);
+	//layers[0].Update(ev, e);
 }
 
 void Map::Draw(ALLEGRO_DISPLAY *display)
 {
-	layers[0].Draw(display);
+	layer->Draw(display);
+	//layers[0].Draw(display);
 }

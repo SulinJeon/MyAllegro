@@ -7,6 +7,7 @@ class TitleScreen : public GameScreen
 {
 	private:
 	MenuManager menu;
+	ALLEGRO_BITMAP *titleImage;
 	public:
 	TitleScreen();
 	~TitleScreen();

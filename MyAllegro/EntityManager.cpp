@@ -47,6 +47,7 @@ void EntityManager::UnloadContent()
 		entities[i]->UnloadContent();
 		delete entities[i];
 	}
+	entities.clear();
 }
 
 void EntityManager::Update(ALLEGRO_EVENT ev)

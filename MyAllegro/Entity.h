@@ -24,6 +24,8 @@ class Entity
 	FloatRect *rect, *prevRect;
 	float position[2], prevPosition[2];
 	bool activateGravity;
+	//불 점핑
+	bool isJumping;
 	Animation animation;
 	//거의다 이제 비슷해서 주석 달게 없음... 이건 방향
 	enum Direction { DOWN, LEFT, RIGHT, UP }direction;

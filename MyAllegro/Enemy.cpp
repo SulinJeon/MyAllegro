@@ -21,6 +21,8 @@ void Enemy::LoadContent(std::vector<std::string> category, std::vector<std::stri
 
 void Enemy::UnloadContent()
 {
+	delete rect;
+	delete prevRect;
 	Entity::UnloadContent();
 }
 
